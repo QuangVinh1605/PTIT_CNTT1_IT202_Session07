@@ -91,3 +91,9 @@ where id =
 (select sum(total_amount) as tong_tien_tung_nguoi from orders group by customer_id) as bang_tam
     )
 );
+
+-- bai6:
+select customer_id, sum(total_amount) as tong_chi_tieu group by customer_id having sum(total_amount) > (
+select avg(tong_tung_nguoi) from 
+(select sum(total_amount) as tong_tung_nguoi from orders group by customer_id) as bang_tam
+);
